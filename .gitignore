@@ -1,0 +1,5 @@
+__pycache__/
+*.py[cod]
+clickhouse_data/
+.DS_Store
+train.csv
