@@ -50,17 +50,6 @@ This project demonstrates loading a fraud dataset into Kafka, sinking the stream
 
    The command above generates `results/top_category_per_state.csv` straight from ClickHouse.
 
-6. To reset everything and verify the README from scratch, run `docker compose down -v` (drops containers and the ClickHouse named volume) and delete the generated CSV with `rm -rf results`. Then repeat steps 1‒5.
-
-## Supporting files
-
-- `train.csv`: source transaction dataset
-- `scripts/load_transactions_to_kafka.py`: CSV-to-Kafka publisher
-- `sql/create_tables.sql`: ClickHouse Kafka table, MergeTree sink, and materialized view definitions plus the storage optimizations described below
-- `sql/top_category_per_state.sql`: query that returns each state's winning category
-- `results/top_category_per_state.csv`: created by step 5 and contains the query output
-- `docker-compose.yml`: Docker configuration for Kafka, Zookeeper, and ClickHouse
-
 ## Storage optimizations (point 4)
 
 1. The MergeTree table is partitioned by `toYYYYMM(transaction_time)` and ordered by `(us_state, cat_id, transaction_time)` so queries that aggregate by state and category scan fewer parts.
