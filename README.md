@@ -9,6 +9,7 @@ This project demonstrates loading a fraud dataset into Kafka, sinking the stream
 - Docker & Docker Compose (20+ or compatible)
 - Python 3.8+ (use a virtual environment if desired)
 - `kafka-python` (installed via `pip install -r requirements.txt`)
+- Download train.csv from [here](https://www.kaggle.com/competitions/teta-ml-1-2025/data?select=train.csv) and put it in the root of this repo
 
 ## Getting started
 
